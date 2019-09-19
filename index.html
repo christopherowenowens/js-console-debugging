@@ -1,0 +1,62 @@
+<html>
+<!-- JavaScript debugging methods -->
+<!-- inspired by https://levelup.gitconnected.com/moving-beyond-console-log-8-console-methods-you-should-use-when-debugging-javascript-and-node-25f6ac840ada -->
+
+Open F12 / console to see example console tools.
+
+<script>
+
+// console.error - this one wasn't in their list but I like it
+// as it shows red error instead of just log
+	console.error("borked!");
+
+// Console assert - just logs falsey values.
+// Great for a quick spotcheck of flags.
+	console.assert(1, "True won't display jack");
+	    // No return since it's truthy
+	console.assert(0, "If false, display this");
+	    // Will return " Assertion failed: If false, display this"
+
+// Consle count - count how many times a passed value.
+	console.count("clicked, scrolled, whatever");
+		// 1
+	console.count("clicked, scrolled, whatever");
+	    // 2
+
+	// Reset count
+	console.countReset('clicked, scrolled, whatever');
+
+// Console Group
+// Useful for grouping logs
+
+	console.group('Load errors');
+	console.log('301');
+	console.log('http/https');
+	console.groupEnd();
+	console.group('Logic errors');
+	console.log('incorrect parameter in field');
+	console.groupEnd();
+
+// Console Table
+// Great for arrays
+	var cryptokitties = [
+		{name: 'Peachfuzz', color:1},
+		{name: 'Piao xiao mao', color:2},
+		{name: 'Sluggerdon', color:3}
+	];
+
+	console.table(cryptokitties);
+
+// Console Time
+// Timing for performance tuning
+
+	console.group('timed test');
+	console.time('logtime logic test');
+	for(let i=0; i<3; i++) {
+		console.log('logging!')
+	}
+	console.timeEnd('logtime logic test');
+	console.groupEnd();
+
+</script>
+</html>
